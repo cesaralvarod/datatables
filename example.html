@@ -134,10 +134,6 @@
         </table>
       </div>
     </div>
-    <div class="content">
-      <h1>And this is a Dinamic Table</h1>
-      <div id="datatable2"></div>
-    </div>
     <div class="card">
       <div class="urls">
         <a href="index.html">Principal</a>
@@ -159,36 +155,6 @@
         element: "#datatable",
       });
       dt.parse();
-
-      const dt2 = new Datatable({
-        element: "#datatable2",
-        style: {
-          highlight: true,
-        },
-        ajax: {
-          url: "./data.json",
-        },
-        headers: ["Date", "Name", "Lastname", "Age", "City", "Email"],
-        columns: ["date", "firstname", "lastname", "age", "city", "email"],
-        headerButtons: [
-          {
-            id: "bAdd",
-            icon: "fa-plus-circle",
-            action: function () {},
-          },
-          {
-            id: "bPdf",
-            icon: "fa-file-pdf",
-            action: function () {},
-          },
-          {
-            id: "bExcel",
-            icon: "fa-file-excel",
-            action: function () {},
-          },
-        ],
-      });
-      dt2.parse();
     </script>
   </body>
 </html>
