@@ -1,0 +1,353 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  /* Light theme */
+  --light-color: #212529;
+  --light-second-color: #727475;
+  --light-background: #ffffff;
+  --light-second-background: #f1f1f1;
+  --gray: #6c757d;
+  --dt-borders-light: #ececec;
+
+  /* Dark Theme */
+  --dark-color: #f5f6fa;
+  --dark-second-color: #909090;
+  --dark-background: #23242d;
+  --dark-second-background: #181818;
+  --gray-dark: #a6b0bb;
+  --dt-borders-dark: #363636;
+
+  /* Datatables */
+  --dt-status-active-color: #00a65a;
+  --dt-status-inactive-color: #ee3528;
+  --dt-status-available-color: #52bd0a;
+  --dt-status-away-color: #cf5525;
+  --dt-status-offline-color: #a5a5a5;
+  --highlight-color: #438cbd;
+}
+
+.light {
+  --primary: var(--orange);
+  --secondary: var(--gray);
+  --main-bg-color: var(--light-background);
+  --second-bg-color: var(--light-second-background);
+  --main-color: var(--light-color);
+  --second-color: var(--light-second-color);
+  --dt-borders: var(--dt-borders-light);
+}
+
+.dark {
+  --primary: var(--pink);
+  --secondary: var(--gray);
+  --main-bg-color: var(--dark-background);
+  --second-bg-color: var(--dark-second-background);
+  --main-color: var(--dark-color);
+  --second-color: var(--dark-second-color);
+  --dt-borders: var(--dt-borders-dark);
+}
+
+html {
+  font-size: 62.5%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  outline: none;
+}
+
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  line-height: 1.5;
+  font-size: 1.4rem;
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  font-weight: 300;
+  color: var(--main-color);
+  background: rgb(92, 114, 177);
+  overflow-x: hidden;
+}
+
+ul {
+  list-style: none;
+}
+
+.content h1 {
+  text-align: center;
+  margin: 2rem 0;
+  color: #ffffff;
+}
+
+.datatable input[type="checkbox"] {
+  display: block;
+}
+
+.datatable {
+  width: 95%;
+  max-width: 80rem;
+  box-sizing: border-box;
+  background: var(--main-bg-color);
+  color: var(--main-color);
+  padding: 2rem;
+  overflow-x: auto;
+  margin: 2rem auto;
+  border-radius: 3px;
+}
+
+.datatable input,
+.datatable select,
+.datatable button{
+  outline: none;
+}
+
+.datatable .header-tools {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 2rem 1rem;
+}
+
+.datatable .header-tools .tools {
+  width: 60%;
+}
+
+@media (max-width: 560px) {
+  .datatable .header-tools .tools {
+    width: 100%;
+  }
+}
+
+.datatable .header-tools .tools ul {
+  display: flex;
+  justify-content: baseline;
+  align-items: center;
+  gap: 1.8rem;
+}
+
+.datatable .header-tools .tools ul li button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0.8rem;
+}
+
+.datatable .header-tools .tools ul li button i {
+  color: var(--main-color);
+}
+
+.datatable .header-tools .search {
+  width: 40%;
+}
+
+@media (max-width: 560px) {
+  .datatable .header-tools .search {
+    width: 100%;
+  }
+}
+
+.datatable .header-tools .search .search-input {
+  width: 100%;
+  display: block;
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  border: none;
+  border-radius: 3px;
+  border: 1px solid #b4b4b4;
+  background: transparent;
+  padding: 0.5rem 1rem;
+  color: var(--main-color);
+}
+
+.datatable .header-tools .search .search-input:focus {
+  border: 1px solid var(--highlight-color);
+}
+
+.datatable .table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.datatable .table th {
+  border-top: 1px solid var(--dt-borders);
+  border-bottom: 1px solid var(--dt-borders);
+  padding: 1.5rem 1rem;
+  text-align: left;
+}
+
+.datatable .table tbody td {
+  font-weight: 400;
+  border-top: 1px solid var(--dt-borders);
+  padding: 1rem;
+}
+
+.datatable .table tbody td ul.actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.datatable .table tbody td ul.actions li button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0.5rem;
+  font-size: 1.4rem;
+  color: var(--main-color);
+}
+
+.datatable .table.shaded-rows tbody tr:nth-child(even) {
+  background: var(--dt-borders);
+}
+
+.datatable .table.highlight-hover tbody tr:hover {
+  background: var(--highlight-color);
+  color: #ffffff;
+}
+
+.datatable .table tbody tr .inactive::after,
+.datatable .table tbody tr .active::after,
+.datatable .table tbody tr .available::after,
+.datatable .table tbody tr .away::after,
+.datatable .table tbody tr .offline::after {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 1.4rem;
+  font-weight: 400;
+}
+
+.datatable .table tbody tr .inactive::after {
+  content: "Inactive";
+  color: var(--dt-status-inactive-color);
+}
+
+.datatable .table tbody tr .active::after {
+  content: "Active";
+  color: var(--dt-status-active-color);
+}
+
+.datatable .table tbody tr .available::after {
+  content: "Online";
+  color: var(--dt-status-available-color);
+}
+
+.datatable .table tbody tr .away::after {
+  content: "Away";
+  color: var(--dt-status-away-color);
+}
+
+.datatable .table tbody tr .offline::after {
+  content: "Offline";
+  color: var(--dt-status-offline-color);
+}
+
+.datatable .table tbody tr .active::before,
+.datatable .table tbody tr .inactive::before,
+.datatable .table tbody tr .available::before,
+.datatable .table tbody tr .away::before,
+.datatable .table tbody tr .offline::before {
+  content: "";
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  margin-right: 1rem;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+
+.datatable .table tbody tr .inactive::before {
+  background: var(--dt-status-inactive-color);
+}
+
+.datatable .table tbody tr .active::before {
+  background: var(--dt-status-active-color);
+}
+
+.datatable .table tbody tr .available::before {
+  background: var(--dt-status-available-color);
+}
+
+.datatable .table tbody tr .away::before {
+  background: var(--dt-status-away-color);
+}
+
+.datatable .table tbody tr .offline::before {
+  background: var(--dt-status-offline-color);
+}
+
+.datatable .footer-tools {
+  width: 100%;
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.datatable .footer-tools .list-items {
+  width: 30%;
+}
+
+@media (max-width: 560px) {
+  .datatable .footer-tools .list-items {
+    width: 100%;
+  }
+}
+
+.datatable .footer-tools .list-items select {
+  border: none;
+  background: transparent;
+  color: var(--main-color);
+  padding: 0.5rem;
+  appearance: none;
+  font-family: inherit;
+  border: 1px solid var(--dt-borders);
+  -webkit-appearance: none;
+}
+
+.datatable .footer-tools .list-items select:focus {
+  border: 1px solid var(--highlight-color);
+}
+
+.datatable .footer-tools .pages {
+  width: 70%;
+}
+
+@media (max-width: 560px) {
+  .datatable .footer-tools .pages {
+    width: 100%;
+  }
+}
+
+.datatable .footer-tools .pages ul {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.datatable .footer-tools .pages ul li button,
+.datatable .footer-tools .pages ul li span {
+  padding: 0.5rem 1.2rem;
+  font-family: inherit;
+  font-size: 1.6rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.datatable .footer-tools .pages ul li button {
+  border: none;
+  background: transparent;
+  color: var(--main-color);
+  cursor: pointer;
+  transition: all 0.1s ease-in-out;
+}
+
+.datatable .footer-tools .pages ul li button:hover,
+.datatable .footer-tools .pages ul li span.active {
+  background: var(--highlight-color);
+  color: #fff;
+}
